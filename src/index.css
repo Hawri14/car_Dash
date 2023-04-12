@@ -2,10 +2,24 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+    sans-serif, 'MersadBold';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
 }
+
+/* Webfont: Mersad-Bold */
+@font-face {
+  font-family: 'MersadBold';
+  src: url('/src/fonts/Mersad\ Bold.woff2') format('woff2'),
+    /* Modern Browsers */
+    url('/src/fonts/Mersad\ Bold.otf') format('opentype');
+  /* Safari, Android, iOS */
+  font-style: normal;
+  font-weight: bold;
+  text-rendering: optimizeLegibility;
+}
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

@@ -1,34 +1,91 @@
+@font-face {
+  font-family: 'Mersad';
+  src: url('./fonts/Mersad\ Black.otf') format('truetype');
+}
+
 body {
-  background-color: black;
+  background-image: url(/src/images/bg-dark.png);
+  background-repeat: no-repeat;
   width: 800px;
   height: 480px;
 }
+
+
+#dark {
+  background-image: url(/src/images/bg-dark.png);
+}
+
+#light {
+  background-image: url(/src/images/bg-light.png);
+}
+
 
 .gauges {
   display: flex;
   justify-content: center;
   align-items: center;
-
+  padding-top: 90px;
+  padding-left: 35px;
 }
 
 /*.dashboard{
   
 }*/
 
-.gauge {
+.gauge-speed {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 25px;
   padding: 80px;
   width: 1000px;
-  height: 1000px;
   background-repeat: no-repeat;
-  background-image: url(/src/images/Outer1.png);
+  background-image: url(/src/images/Outer-dark.png);
+  color: white;
+  padding-top: 40px;
+  z-index: 1;
+  padding-right: 70px;
+}
+
+#light .gauge-speed {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 80px;
+  width: 1000px;
+  background-repeat: no-repeat;
+  background-image: url(/src/images/Outer-light.png);
+  color: white;
+  padding-top: 40px;
+  z-index: 1;
+  padding-right: 70px;
+}
+
+#light .gauge-rpm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 80px;
+  width: 1000px;
+  background-repeat: no-repeat;
+  background-image: url(/src/images/Outer-light.png);
   color: white;
   padding-top: 40px;
   z-index: 1;
 }
+
+.gauge-rpm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 80px;
+  width: 1000px;
+  background-repeat: no-repeat;
+  background-image: url(/src/images/Outer-dark.png);
+  color: white;
+  padding-top: 40px;
+  z-index: 1;
+}
+
 
 .value {
   position: absolute;
@@ -49,33 +106,58 @@ body {
   height: 95px;
   z-index: 2;
   padding-top: 95px;
+
 }
 
 .dial {
   position: relative;
   width: 200px;
   height: 200px;
-  background-image: url(/src/images/Center_circle.svg);
+  background-image: url(/src/images/Center-dark.svg);
   background-repeat: no-repeat;
   display: flex;
   justify-content: center;
   margin-top: -12px;
   margin-left: 37px;
-
 }
+
+#light .dial {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  background-image: url(/src/images/Center-light1.png);
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  margin-top: -12px;
+  margin-left: 37px;
+}
+
 
 .dial1 {
   position: relative;
   width: 200px;
   height: 200px;
-  background-image: url(/src/images/Center_circle.svg);
+  background-image: url(/src/images/Center-dark.svg);
   background-repeat: no-repeat;
   display: flex;
   justify-content: center;
   margin-top: 75px;
   margin-left: 37px;
-
 }
+
+#light .dial1 {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  background-image: url(/src/images/Center-light1.png);
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  margin-top: 75px;
+  margin-left: 37px;
+}
+
 
 */ .tick {
   position: absolute;
@@ -86,6 +168,8 @@ body {
   transform: translate(-50%, -100%);
   background-color: white;
 }
+
+
 
 .tick:nth-child(1) {
   transform: translate(-50%, -95%) rotate(0deg);
@@ -123,57 +207,158 @@ body {
   transform: translate(-50%, -95%) rotate(240deg);
 }
 
+
 .needle {
   position: absolute;
   width: 4px;
-  height: 150px;
-  background-color: blue;
+  height: 120px;
+  background: linear-gradient(260deg, rgba(0, 0, 0, 0) 0%, rgba(255, 0, 0, 0) 0%, rgba(255, 0, 0, 0) 0%, rgba(255, 0, 0, 0) 0%, rgba(255, 0, 0, 0) 0%, rgba(255, 0, 0, 0) 0%, rgba(255, 0, 0, 0) 20%, rgba(255, 0, 0, 0.534) 49%, rgba(255, 0, 0, 0) 100%);
   border-radius: 5px;
   transform: rotate(-90deg);
   transform-origin: bottom center;
   transition: transform 0.3s ease-in-out;
   z-index: -1;
   margin-right: 80px;
-  margin-top: -85px;
+  margin-top: -57px;
+}
+
+#light .needle {
+  position: absolute;
+  width: 4px;
+  height: 120px;
+  background: linear-gradient(260deg, rgba(0, 0, 0, 0) 0%, rgba(255, 0, 0, 0) 0%, rgba(255, 0, 0, 0) 0%, rgba(255, 0, 0, 0) 0%, rgba(255, 0, 0, 0) 0%, rgba(255, 0, 0, 0) 0%, rgba(255, 0, 0, 0) 20%, rgba(17, 0, 255, 0.534) 49%, rgba(255, 0, 0, 0) 100%);
+  border-radius: 5px;
+  transform: rotate(-90deg);
+  transform-origin: bottom center;
+  transition: transform 0.3s ease-in-out;
+  z-index: -1;
+  margin-right: 80px;
+  margin-top: -57px;
 }
 
 .needle1 {
   position: absolute;
   width: 4px;
-  height: 150px;
-  background-color: blue;
+  height: 120px;
+  background: linear-gradient(260deg, rgba(0, 0, 0, 0) 0%, rgba(255, 0, 0, 0) 0%, rgba(255, 0, 0, 0) 0%, rgba(255, 0, 0, 0) 0%, rgba(255, 0, 0, 0) 0%, rgba(255, 0, 0, 0) 0%, rgba(255, 0, 0, 0) 20%, rgba(255, 0, 0, 0.534) 49%, rgba(255, 0, 0, 0) 100%);
   border-radius: 5px;
   transform: rotate(-90deg);
   transform-origin: bottom center;
   transition: transform 0.3s ease-in-out;
-  margin-top: -85px;
+  margin-top: -60px;
+  margin-left: -40px;
+  z-index: -1;
+}
+
+#light .needle1 {
+  position: absolute;
+  width: 4px;
+  height: 120px;
+  background: linear-gradient(260deg, rgba(0, 0, 0, 0) 0%, rgba(255, 0, 0, 0) 0%, rgba(255, 0, 0, 0) 0%, rgba(255, 0, 0, 0) 0%, rgba(255, 0, 0, 0) 0%, rgba(255, 0, 0, 0) 0%, rgba(255, 0, 0, 0) 20%, rgba(17, 0, 255, 0.534) 49%, rgba(255, 0, 0, 0) 100%);
+  border-radius: 5px;
+  transform: rotate(-90deg);
+  transform-origin: bottom center;
+  transition: transform 0.3s ease-in-out;
+  margin-top: -60px;
   margin-left: -40px;
   z-index: -1;
 }
 
 .label {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 10px;
+  font-size: 16px;
+  padding-top: 160px;
   z-index: 11;
+  font-family: MersadBold;
+}
+
+#light .label {
+  font-size: 16px;
+  padding-top: 160px;
+  z-index: 11;
+  font-family: MersadBold;
+  color: rgb(126, 120, 120);
 }
 
 .value {
-  font-size: 40px;
-  font-weight: bold;
+  font-size: 35px;
   z-index: 11;
+  padding-top: 115px;
+  font-family: MersadBold;
+}
+
+#light .value {
+  font-size: 35px;
+  z-index: 11;
+  padding-top: 115px;
+  font-family: MersadBold;
+  color: rgb(31, 31, 31);
 }
 
 .time {
   position: absolute;
-  top: 10px;
-  left: 10px;
+  top: 20px;
+  left: 165px;
   font-size: 32px;
   font-weight: bold;
   color: white;
+  font-family: MersadBold;
 }
 
-.oil{
+#light .time {
+  position: absolute;
+  top: 20px;
+  left: 165px;
+  font-size: 32px;
+  font-weight: bold;
+  color: rgb(31, 31, 31);
+  font-family: MersadBold;
+}
+
+.oil {
+  position: absolute;
+  top: -11px;
+  left: 565px;
+  font-size: 32px;
+  font-weight: bold;
   color: white;
-  margin-bottom: 500px;
+  font-family: MersadBold;
+}
+
+#light .oil {
+  position: absolute;
+  top: -11px;
+  left: 565px;
+  font-size: 32px;
+  font-weight: bold;
+  color: rgb(31, 31, 31);
+  font-family: MersadBold;
+}
+
+.Gleaf {
+  position: absolute;
+  background-image: url(/src/images/Gleaf-light.svg);
+  background-repeat: no-repeat;
+}
+
+
+.Rleaf {
+  position: absolute;
+  background-image: url(/src/images/Rleaf.svg);
+  background-repeat: no-repeat;
+  padding-top: 1250px;
+  padding-left: 70px;
+}
+
+
+.leaf-image {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  top: 20px;
+  left: 390px;
+}
+
+
+.switch {
+  margin-top: 290px;
 }
