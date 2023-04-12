@@ -7,8 +7,8 @@ import ReactSwitch from "react-switch";
 export const ThemeContext = createContext(null);
 
 // Define the getThemeForTime function first
-function getThemeForTime(currentHour, currentMinute) {
-  if ((currentHour === 6 && currentMinute >= 0) || (currentHour >= 7 && currentHour < 18) || (currentHour === 18 && currentMinute === 0)) {
+function getThemeForTime(currentHour, currentMinute, currentSecond) {
+  if ((currentHour === 6 && currentMinute === 0 && currentSecond === 0) || (currentHour >= 7 && currentHour < 18) || (currentHour === 18 && currentMinute === 0 && currentSecond === 0)) {
     return "light";
   } else {
     return "dark";
@@ -20,7 +20,7 @@ function App() {
   // Declare state variables for speed, RPM, and time
   const [speed, setSpeed] = useState(null);
   const [rpm, setRpm] = useState(null);
-  const [time] = useState(new Date());
+  const [time, setTime] = useState(new Date());
   const [temp, setTemp] = useState(null);
   const [leafImage, setLeafImage] = useState(Gleaf);
   const [imageNumber, setImageNumber] = useState(1);
@@ -28,7 +28,8 @@ function App() {
     const currentDate = new Date();
     const currentHour = currentDate.getHours();
     const currentMinute = currentDate.getMinutes();
-    return getThemeForTime(currentHour, currentMinute);
+    const currentSecond = currentDate.getSeconds();
+    return getThemeForTime(currentHour, currentMinute, currentSecond);
   });
 
 
@@ -37,7 +38,8 @@ function App() {
     const currentDate = new Date();
     const currentHour = currentDate.getHours();
     const currentMinute = currentDate.getMinutes();
-    const newTheme = getThemeForTime(currentHour, currentMinute);
+    const currentSecond = currentSecond.getSeconds();
+    const newTheme = getThemeForTime(currentHour, currentMinute, currentSecond);
     setTheme(newTheme);
     console.log("Current theme:", newTheme);
     console.log("ID:", newTheme === "light" ? "light-theme" : "dark-theme");
@@ -48,9 +50,11 @@ function App() {
       const now = new Date();
       const hours = now.getHours();
       const minutes = now.getMinutes();
-      const newTheme = getThemeForTime(hours, minutes);
+      const seconds = now.getSeconds();
+      const newTheme = getThemeForTime(hours, minutes, seconds);
       setTheme(newTheme);
-    }, 10000); // Checks theme every 10 seconds
+      setTime(new Date());
+    }, 1000); // Checks theme every 1 second
     
     return () => clearInterval(intervalId);
   }, []);
@@ -200,7 +204,7 @@ function App() {
     
 
       {/* Display the time */}
-      <div className="time">{time.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit', hour12: false})}</div>
+      <div className="time">{time.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit', second:"2-digit", hour12: false})}</div>
     </div>
     </ThemeContext.Provider>
   );
