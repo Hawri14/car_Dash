@@ -7,8 +7,8 @@ import ReactSwitch from "react-switch";
 export const ThemeContext = createContext(null);
 
 // Define the getThemeForTime function first
-function getThemeForTime(currentHour, currentMinute, currentSecond) {
-  if ((currentHour === 6 && currentMinute === 0 && currentSecond === 0) || (currentHour >= 7 && currentHour < 18) || (currentHour === 18 && currentMinute === 0 && currentSecond === 0)) {
+function getThemeForTime(currentHour, currentMinute) {
+  if ((currentHour === 6 && currentMinute === 0) || (currentHour >= 7 && currentHour < 18) || (currentHour === 18 && currentMinute === 0)) {
     return "light";
   } else {
     return "dark";
@@ -28,8 +28,7 @@ function App() {
     const currentDate = new Date();
     const currentHour = currentDate.getHours();
     const currentMinute = currentDate.getMinutes();
-    const currentSecond = currentDate.getSeconds();
-    return getThemeForTime(currentHour, currentMinute, currentSecond);
+    return getThemeForTime(currentHour, currentMinute);
   });
 
 
@@ -38,8 +37,7 @@ function App() {
     const currentDate = new Date();
     const currentHour = currentDate.getHours();
     const currentMinute = currentDate.getMinutes();
-    const currentSecond = currentSecond.getSeconds();
-    const newTheme = getThemeForTime(currentHour, currentMinute, currentSecond);
+    const newTheme = getThemeForTime(currentHour, currentMinute);
     setTheme(newTheme);
     console.log("Current theme:", newTheme);
     console.log("ID:", newTheme === "light" ? "light-theme" : "dark-theme");
@@ -50,8 +48,7 @@ function App() {
       const now = new Date();
       const hours = now.getHours();
       const minutes = now.getMinutes();
-      const seconds = now.getSeconds();
-      const newTheme = getThemeForTime(hours, minutes, seconds);
+      const newTheme = getThemeForTime(hours, minutes);
       setTheme(newTheme);
       setTime(new Date());
     }, 1000); // Checks theme every 1 second
@@ -204,7 +201,7 @@ function App() {
     
 
       {/* Display the time */}
-      <div className="time">{time.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit', second:"2-digit", hour12: false})}</div>
+      <div className="time">{time.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit', hour12: false})}</div>
     </div>
     </ThemeContext.Provider>
   );
